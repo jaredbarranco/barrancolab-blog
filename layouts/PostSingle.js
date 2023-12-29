@@ -75,6 +75,12 @@ const PostSingle = ({ post, mdxContent, slug, posts }) => {
                     </span>{" "}
                     |
                   </li>
+                  {/* <li className="mb-2 mr-4 inline-block">
+                    <span className="mr-2 inline-block">
+                      {post_id}
+                    </span>{" "}
+                    |
+                  </li> */}
                   <li className="mb-2 mr-4 inline-block">
                     {readingTime(content)}
                   </li>
