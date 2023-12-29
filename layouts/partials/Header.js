@@ -21,10 +21,10 @@ const Header = () => {
     const navList = [...menu.main];
 
     if (matchRoute) {
-      if (matchRoute.url === "/") {
-        const arr = categories.slice(0, 4);
-        navList.splice(1, 0, ...arr);
-        setNavMenu(navList);
+      if (matchRoute.url === "/blog") {
+        const arr = categories.slice(0, 6); // add first 4 categories
+        navList.splice(1, 0, ...arr); // insert the categories after the 0 index, removing nothing
+        setNavMenu(arr); // set to new navList
       } else {
         setNavMenu(menu.main);
       }
