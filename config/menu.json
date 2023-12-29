@@ -1,12 +1,22 @@
 {
   "main": [
     {
-      "name": "All Posts",
+      "name": "Home",
       "url": "/"
+    },
+    {
+      "name": "Blog",
+      "url": "/blog"
     },
     {
       "name": "Contact",
       "url": "/contact"
+    }
+  ],
+  "hidden": [
+    {
+      "name": "Thanks",
+      "url": "/thanks"
     },
     {
       "name": "Elements",
