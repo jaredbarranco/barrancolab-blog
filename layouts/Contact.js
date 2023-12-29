@@ -17,7 +17,7 @@ const Contact = ({ data }) => {
             </div>
             <div className="mt-12 pt-12">
               {markdownify(title, "h3", "h5 font-normal text-3xl")}
-              <form className="contact-form mt-6" action={contact_form_action}>
+              <form className="contact-form mt-6" action={contact_form_action} method="POST">
                 <div className="row mb-6">
                   <div className="md:col-6">
                     <label className="mb-2 block" htmlFor="name">
@@ -50,7 +50,7 @@ const Contact = ({ data }) => {
                   </label>
                   <input
                     className="form-input w-full"
-                    name="subject"
+                    name="_subject"
                     type="text"
                     placeholder="Reasons for contact"
                     required
@@ -69,6 +69,9 @@ const Contact = ({ data }) => {
                 <button className="btn btn-primary rounded text-sm">
                   Send Message
                 </button>
+                <div>
+                <input type="hidden" name="_next" value="http://localhost:3000/thanks"></input>
+                </div>
               </form>
             </div>
           </div>

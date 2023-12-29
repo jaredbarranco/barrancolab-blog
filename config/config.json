@@ -1,25 +1,25 @@
 {
   "site": {
-    "title": "Hydrogen Nextjs",
+    "title": "Blog | Jared Barranco",
     "base_url": "/",
     "favicon": "/images/developer.png"
   },
 
   "settings": {
-    "pagination": 6,
+    "pagination": 12,
     "summary_length": 200,
     "blog_folder": "posts"
   },
 
   "profile": {
-    "name": "Michael Caine",
+    "name": "Jared Barranco",
     "image": "/images/developer.png",
-    "designation": "Front-end developer",
-    "bio": "A Full Stack Front-end Developer based in New York. Meticulous web developer with over 2 years of front end experience and passion for responsive and mobile-first website design."
+    "designation": "Technology and Solutions Enthusiast",
+    "bio": "A developer with 9 years experience in the Transportation and Logistics industry. A problem-solver with a broad skillset spanning various disciplines."
   },
 
   "params": {
-    "contact_form_action": "#",
+    "contact_form_action": "https://formsubmit.co/c7ad46bc5b8cb715ca230c485eb189eb",
     "tag_manager_id": "",
     "copyright": "Copyright © 2022 a theme by [statichunt](https://statichunt.com)"
   },
@@ -32,6 +32,6 @@
 
   "disqus": {
     "enable": true,
-    "shortname": "themefisher-template"
+    "shortname": "barrancolab"
   }
 }
