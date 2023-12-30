@@ -26,7 +26,7 @@ jobs:
       run: npm install --legacy-peer-deps
 
     - name: Build
-      run: npm run build
+      run: npm run export
 
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v4
@@ -36,4 +36,4 @@ jobs:
         role-duration-seconds: 1200
 
     - name: Sync to S3
-      run: aws s3 sync .next/ s3://barrancolab-blog
+      run: aws s3 sync out/ s3://barrancolab-blog
