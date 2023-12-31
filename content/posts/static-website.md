@@ -28,14 +28,14 @@ This boiled down to three requirements:
 
 My first step was to identify a front end framework. I am personally not passionate about page design, color picking, or even UI/UX in general. I like to make things work, and work well. My requirements were that the Front End Framework was well documented, the pages were generated from Markdown, and supported image imbedding.
 
-One of the first Google searches for "Static Site Front End Github" is [Awesome Static Generators](https://github.com/myles/awesome-static-generators) Here is where I found the (StaticHunt)[https://statichunt.com/] collection of static site front ends.
+One of the first Google searches for "Static Site Front End Github" is [Awesome Static Generators](https://github.com/myles/awesome-static-generators) Here is where I found the [StaticHunt](https://statichunt.com/) collection of static site front ends.
 
 I picked out the [Hydrogen Theme](https://statichunt.com/themes/hugo-hydrogen) because NextJS appears to have great documentation and online support.
 
 ### Github Configuration
 Just as any project, this one begins with the creation of a new repository in my Github. Thus, [jaredbarranco/barrancolab-blog](https://github.com/jaredbarranco/barrancolab-blog) was forked from the Hydrogen theme repository.
 
-After cloning `main` to my local working directory, I went into the Github Repository Settings and configured a deployment environment with my main branch and required approvals for deployments.
+After cloning the main branch to my local working directory, I went into the Github Repository Settings and configured a deployment environment with my main branch and required approvals for deployments.
 
 #### Deployment Environment
 ![production-deployment-environment](/images/posts/production-deployment-env.png)
@@ -49,7 +49,7 @@ Hydrogen theme repo used NextJS and Tailwind. I won't be updating any of the Tai
 
 #### next.config.js
 
-To get static output from a NextJS file, we need to `output: export` and enable "unoptimized" for the [Image Component](https://nextjs.org/docs/pages/api-reference/components/image#unoptimized)
+To get static output from a NextJS file, we need to "output: export" and enable "unoptimized" for the [Image Component](https://nextjs.org/docs/pages/api-reference/components/image#unoptimized)
 
 ```
   const nextConfig = {
@@ -64,9 +64,9 @@ To get static output from a NextJS file, we need to `output: export` and enable 
 #### Nav Bar Re-Org
 I wanted to keep the "Home" page of my site as plain as possible, with minimal links. This means I needed to re-org the Nav Bar. 
 
-The theme has three main page types: main, page, and post. The `main` page is the home landing page. The `page` type can be treated as a "subpage" since it contains a fast link back to `main`. Finally, the `post` page is for blog posts. To begin, I [added a Dedicated blog page to the menu.json array](https://github.com/jaredbarranco/barrancolab-blog/commit/0bf2ce1b0a390f3a30b9ff7b587b60ce72009a78). 
+The theme has three main page types: main, page, and post. The "main" page is the home landing page. The "page" type can be treated as a "subpage" since it contains a fast link back to "main". Finally, the "post" page is for blog posts. To begin, I [added a Dedicated blog page to the menu.json array](https://github.com/jaredbarranco/barrancolab-blog/commit/0bf2ce1b0a390f3a30b9ff7b587b60ce72009a78). 
 
-All pages gets links added to them based on `Header.js`. I found where the Nav Links are selected and added. I [reassigned](https://github.com/jaredbarranco/barrancolab-blog/commit/46d90b38bd388757fbc9b87de26b2b8cc2f9828a#diff-134f059f6afa4857c72a9b09e4a74672cba3f61299b8ad7f4311821d7f71541a) this functionality to the `/blog` page. Now, only the Blog will contain the categories identified by the taxonomy parser.
+All pages gets links added to them based on "Header.js". I found where the Nav Links are selected and added. I [reassigned](https://github.com/jaredbarranco/barrancolab-blog/commit/46d90b38bd388757fbc9b87de26b2b8cc2f9828a#diff-134f059f6afa4857c72a9b09e4a74672cba3f61299b8ad7f4311821d7f71541a) this functionality to the "/blog" page. Now, only the Blog will contain the categories identified by the taxonomy parser.
 
 The Blog page's format is basically the lower half of the original Hydrogen theme. A quick copy/paste later, we have the [blog sub-page](https://github.com/jaredbarranco/barrancolab-blog/commit/9ed77496febc6aa0fb08ed103a398bdb24144cf1). The page's slug will automatically use this as the source.
 
@@ -82,12 +82,12 @@ I have written tons of Github workflows for my "real job", so this one was mostl
 The workflow checks out the repostiory, installs npm, runs the build command, then uses S3 sync with a OAC defined role in my personal AWS VPC.
 
 ### Cloudfront and Cloudflare
-I already own the domain `barrancolab.com` which is currently registered at Cloudflare. I have other services I run via their ZeroTrust tunnel, so I don't want to move it to AWS. I wanted to take advantage of the Cloudfront CDN, and since this is a static website, it should be an extremely short time to first paint!
+I already own the domain "barrancolab.com" which is currently registered at Cloudflare. I have other services I run via their ZeroTrust tunnel, so I don't want to move it to AWS. I wanted to take advantage of the Cloudfront CDN, and since this is a static website, it should be an extremely short time to first paint!
 
 There is some setup required though . . .
 
 #### Amazon Certificate Manager
-In order to [enable SSL/TLS](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cnames-and-https-requirements.html) via my `barrancolab.com` domain, we have to generate a Certificate. AWS Provides two options, one is DNS Validation and the other is manual validation via Email. The former will remain valid as long as the CNAME DNS entry exists. 
+In order to [enable SSL/TLS](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cnames-and-https-requirements.html) via my "barrancolab.com" domain, we have to generate a Certificate. AWS Provides two options, one is DNS Validation and the other is manual validation via Email. The former will remain valid as long as the CNAME DNS entry exists. 
 
 So to accomplish the above, I logged into the AWS Console, and followed [this set of instructions](https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-request-public.html#request-public-console) to create a new ACM Certificate for my Cloudflare domain. Next, I performed the [DNS Validation](https://docs.aws.amazon.com/acm/latest/userguide/dns-validation.html) by logging into my Cloudflare dashboard and adding the specified source and target values to my DNS settings as a CNAME. 
 
@@ -98,7 +98,7 @@ Make sure you are not "proxy"-ing any of the CNAME entries you create! We are si
 #### Cloudfront Configuration
 Now that I have a certificate that can be used on Cloudfront, its time to connect all the elements together.
 
-This is the [AWS Developer Guide](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/getting-started-cloudfront-overview.html) I followed, except I skipped anything dealing with Route53/DNS configuration since that is being handled by Cloudflare. Additionally, I am only hosting the webstie on my root domain, so I also skipped redirecting S3 API requests from root to subdomain (like `wwww`). 
+This is the [AWS Developer Guide](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/getting-started-cloudfront-overview.html) I followed, except I skipped anything dealing with Route53/DNS configuration since that is being handled by Cloudflare. Additionally, I am only hosting the webstie on my root domain, so I also skipped redirecting S3 API requests from root to subdomain (like "wwww"). 
 
 
 At this point, my site was up and running. All thats left to say is:
