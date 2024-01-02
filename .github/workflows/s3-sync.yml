@@ -36,7 +36,7 @@ jobs:
         role-duration-seconds: 1200
 
     - name: Sync to S3
-      run: aws s3 sync out/ s3://barrancolab-blog --exclude "_next/*"
+      run: aws s3 sync out/ s3://barrancolab-blog
 
     - name: Invalidate Cloudfront
       env:
