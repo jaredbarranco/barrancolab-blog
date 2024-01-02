@@ -36,4 +36,9 @@ jobs:
         role-duration-seconds: 1200
 
     - name: Sync to S3
-      run: aws s3 sync out/ s3://barrancolab-blog
+      run: aws s3 sync out/ s3://barrancolab-blog --exclude "_next/*"
+
+    - name: Invalidate Cloudfront
+      env:
+        distribution: ${{ secrets.CLOUDFRONT_ID }}
+      run: aws cloudfront create-invalidation --distribution-id "$distribution"  --paths "/*"
