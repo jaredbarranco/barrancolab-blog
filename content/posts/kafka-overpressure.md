@@ -1,7 +1,7 @@
 ---
-title: "kafka-overpressure"
+title: "Race Conditions in Event Streaming Dependent Services"
 date: 2024-01-19T16:31:34Z
-image: /images/posts/post-1.jpg
+image: /images/posts/post-8.jpg
 categories:
   - Design
   - Architecture
@@ -40,6 +40,7 @@ My employer operates in the Transportation and Logistics industry. This industry
 The below flowchart illustrates the data feed coming from the ERP, entering Kafka Topics, and a few relevant microservices who are subscribed to them.
 
 
+![StreamingFlow](/images/posts/kafka-overpressure-start.jpg)
 
 
 As anyone familiar with Kafka or flow charts would be able to tell you, there is a very obvious race condition in this architecture. If a document from ERP system reaches the dispatcher prior to getting registered to one or more of our "domains" (this is the specific business segment, vertical, or customer), it will fail to be dispatched to the downstream consumers who are patiently waiting for that data.
@@ -80,7 +81,7 @@ The team put their heads together and came up with some ideas:
 
 
 
-Idea #3 is what we selected to implement. Not only was it a straightforward code change, but the lag can be extended in the future to buy us time to find a more scalable solution. Additionally, due to our chosen Cloud Provider, we pay for our compute whether we are using the resources or not. Running the router and basically having it `exit` after a few lines of code has no impact on our compute spend.
+Idea #3 is what we selected to implement. Not only was it a straightforward code change, but the lag can be extended in the future to buy us time to find a more scalable solution. Additionally, due to our chosen Cloud Provider, we pay for our compute whether we are using the resources or not. Running the router and having it exit after a few lines of code has no impact on our compute spend.
 
 The DelayQueue was implemented in two hours into our UAT environment and confirmed working the following business day.
 
