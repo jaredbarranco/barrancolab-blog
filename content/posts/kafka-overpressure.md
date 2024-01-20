@@ -6,7 +6,7 @@ categories:
   - Design
   - Architecture
 post_id: 8AFAF878-4187-4CFD-9F38-5F9A97D6E262
-draft: true
+draft: false
 ---
 
 # Race Conditions in Event Streaming Dependent Services
