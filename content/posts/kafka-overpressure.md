@@ -64,24 +64,24 @@ This issue was only discovered because in our UAT, the testers were using non-SO
 
 The team put their heads together and came up with some ideas:
 
-- Upstream Seeding: Trigger new **document-router** events after business segment registration.
+- **Upstream Seeding:** Trigger new **dispatcher** events after business segment registration.
     - Pro: Guaranteed matching for same-batch messages
     - Con: O(n) x (Number of Linked documents - 1) rather than just O(n)
 
 
-- Forced Order: Designate the order of document extract in each polling batch from the ERP so that Shipments would always be processed prior to Routings
+- **Forced Order:** Designate the order of document extract in each polling batch from the ERP so that Shipments would always be processed prior to Routings
     - Pro: Guarantees order of dependent documents
     - Con: Works for this specific scenario, but what if a business segment is registered by Routings? Then the Shipments would never find a registered Routing.
 
 
-- Delay Queue: Delay processing of the router by a few seconds
+- **Delay Queue:** Delay processing of the router by a few seconds
     - Pro: Will solve this specific race condition, and allows for future scenarios unlike #2.
     - Con: Has the potential to need longer delays as the system scales
     - Con: will constantly run application until the next message is older than set lag.
 
 
 
-Idea #3 is what we selected to implement. Not only was it a straightforward code change, but the lag can be extended in the future to buy us time to find a more scalable solution. Additionally, due to our chosen Cloud Provider, we pay for our compute whether we are using the resources or not. Running the router and having it exit after a few lines of code has no impact on our compute spend.
+We elected to implement the Delay Queue. Not only was it a straightforward code change, but the lag can be extended in the future to buy us time to find a more scalable solution. Additionally, due to our chosen Cloud Provider, we pay for our compute whether we are using the resources or not. Running the router and having it exit after a few lines of code has no impact on our compute spend.
 
 The DelayQueue was implemented in two hours into our UAT environment and confirmed working the following business day.
 
