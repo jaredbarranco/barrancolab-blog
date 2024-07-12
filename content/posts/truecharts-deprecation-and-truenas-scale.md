@@ -1,20 +1,20 @@
 ---
 title: "Truecharts Deprecation and TrueNAS SCALE"
 date: 2024-07-12T02:37:34Z
-image: /images/posts/post-1.jpg
+image: /images/posts/post-5.jpg
 categories:
-  - Template
+  - Homelab
 post_id: B111D9E7-FF74-4131-9416-7EC7AE08BB5A
-draft: true
+draft: false
 ---
 
 ## History
 
 iXsystems is known for their very stable and well adopted enterprise NAS operating system TrueNAS CORE. This is ran on FreeBSD. In 2022, they released TrueNAS SCALE. SCALE is ran on top of Debian Linux, and thus can be run on a broader range of hardware, making it an option for a broader market.[^1] 
 s
-When initially deciding on requirements for SCALE, iXsystems wanted to give their users the ability to deploy services alongside their NAS. Coming from an enterprise services perspective, Kubernetes was an obvious option. From their initial GA SCALE release named Angelfish, until the most recent release in 2024, Dragonfish, Kubernetes was the supported container orchestration platform. Throughout the two years, I personlly read many support articles and blog posts with the single complaint that SCALE did not support Docker natively. ixSystems apparently heard the complains and have decided to "pivot". 
+When initially deciding on requirements for SCALE, iXsystems wanted to give their users the ability to deploy services alongside their NAS. Coming from an enterprise services perspective, Kubernetes was an obvious option. From their initial GA SCALE release named Angelfish, until the most recent release in 2024, Dragonfish, Kubernetes was the supported container orchestration platform. Throughout the two years, I personally read many support articles and blog posts with the single complaint that SCALE did not support Docker natively. ixSystems apparently heard the complains and have decided to "pivot". 
 
-As of their next release, Electic Eel, iXsystems will no longer support Kubernetes for their containerization service. In my opinon, this is a welcome change. However, an entire ecosystem was created around Kubernetes supported TrueNAS SCALE apps. The most notable was the [Truecharts](https://truecharts.org/) organization. Truecharts builds and maintains a large list of opinionated Helm charts that make spinning up pods quickly a breeze, particularly via the SCALE GUI. Many casual users of SCALE took advantage of the broad catalog of applications. But with the release of Electric Eel, the rug has been pulled on those not using "Offical" TrueNAS Applications. iXsystems will thankfully provide an automatic transition to the new containerization service: Docker.
+As of their next release, Electric Eel, iXsystems will no longer support Kubernetes for their containerization service. In my opinion, this is a welcome change. However, an entire ecosystem was created around Kubernetes supported TrueNAS SCALE apps. The most notable was the [Truecharts](https://truecharts.org/) organization. Truecharts builds and maintains a large list of opinionated Helm charts that make spinning up pods quickly a breeze, particularly via the SCALE GUI. Many casual users of SCALE took advantage of the broad catalog of applications. But with the release of Electric Eel, the rug has been pulled on those not using "Official" TrueNAS Applications. iXsystems will thankfully provide an automatic transition to the new containerization service: Docker.
 
 
 
@@ -34,7 +34,7 @@ Effectively, my plan is to:
 
 2. Screenshot or document the Truechart's application configuration, as there is not an automated way to do this.
 
-3. Start a new version of the application from TrueNAS SCALE's offical release, mirroring as much as possible from Truecharts.
+3. Start a new version of the application from TrueNAS SCALE's official release, mirroring as much as possible from Truecharts.
 
 4. Verify that directories can be mounted and resources accessed.
 

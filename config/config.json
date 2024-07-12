@@ -4,32 +4,27 @@
     "base_url": "/",
     "favicon": "/images/developer.png"
   },
-
   "settings": {
     "pagination": 12,
     "summary_length": 200,
     "blog_folder": "posts"
   },
-
   "profile": {
     "name": "Jared Barranco",
     "image": "/images/developer.png",
     "designation": "Technology and Solutions Enthusiast",
-    "bio": "A developer with 9 years experience in the Transportation and Logistics industry. A problem-solver with a broad skillset spanning various disciplines."
+    "bio": "Versatile software engineer with 9 years experience in the Transportation and Logistics industry. Skilled in solving complex problems across various technologies and disciplines with a focus on back-end and microservice solutions."
   },
-
   "params": {
     "contact_form_action": "https://formsubmit.co/c7ad46bc5b8cb715ca230c485eb189eb",
     "tag_manager_id": "",
     "copyright": "Copyright © 2022 a theme by [statichunt](https://statichunt.com)"
   },
-
   "metadata": {
     "meta_author": "Statichunt",
     "meta_image": "",
     "meta_description": ""
   },
-
   "disqus": {
     "enable": true,
     "shortname": "barrancolab"
