@@ -1,7 +1,7 @@
 ---
-title: "building-integration-trust"
+title: "Building (and Enforcing) Integration Trust"
 date: 2025-08-11T23:34:00Z
-image: /images/posts/post-9.jpg
+image: /images/posts/post-5.jpg
 categories:
   - Technology
 post_id: FE2B6C97-8CAF-4527-AA97-B52BC7FADA47
