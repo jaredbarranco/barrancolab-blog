@@ -29,6 +29,7 @@ import {
   IoLogoWhatsapp,
   IoLogoYoutube,
   IoMail,
+  IoDocumentText,
 } from "react-icons/io5";
 
 const Social = ({ source, className }) => {
@@ -63,6 +64,7 @@ const Social = ({ source, className }) => {
     address,
     skype,
     website,
+    resume,
   } = source;
   return (
     <ul className={className}>
@@ -413,6 +415,18 @@ const Social = ({ source, className }) => {
             rel="noopener noreferrer nofollow"
           >
             <IoLocation />
+          </a>
+        </li>
+      )}
+      {resume && (
+        <li className="inline-block">
+          <a
+            aria-label="resume"
+            href={resume}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+          >
+            <IoDocumentText />
           </a>
         </li>
       )}
