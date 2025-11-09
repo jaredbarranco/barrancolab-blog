@@ -46,8 +46,8 @@ const Home = ({ posts }) => {
       {/* posts */}
       <div className="section">
         <div className="container">
-          <div className="grid grid-cols-12 gap-8">
-            <div className="h-full overflow-y-auto lg:col-span-6">
+          <div className="flex flex-col lg:grid lg:grid-cols-12 lg:gap-8">
+            <div className="w-full lg:col-span-6 h-full overflow-y-auto">
               <div className="row">
                 {sortPostByDate.map((post, i) => (
                   <Post
@@ -58,7 +58,7 @@ const Home = ({ posts }) => {
                 ))}
               </div>
             </div>
-            <div className="h-full overflow-y-auto lg:col-span-6">
+            <div className="w-full lg:col-span-6 h-full overflow-y-auto flex flex-col items-center">
               <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7391890186550312960" height="1111" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
               <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7384017792473186304" height="838" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
             </div>
