@@ -44,30 +44,28 @@ const Home = ({ posts }) => {
       </div>
 
       {/* posts */}
-      <div className="pt-4">
+      <div className="section">
         <div className="container">
-          <div className="row">
-            <div className="mx-auto lg:col-10">
+          <div className="flex flex-col lg:grid lg:grid-cols-12 lg:gap-8">
+            <div className="w-full lg:col-span-6 h-full overflow-y-auto">
               <div className="row">
-                {sortPostByDate.slice(0, pagination).map((post, i) => (
+                {sortPostByDate.map((post, i) => (
                   <Post
-                    className="col-12 mb-6 sm:col-6"
+                    className="col-12 mb-6"
                     key={"key-" + i}
                     post={post}
                   />
                 ))}
               </div>
             </div>
-          </div>
-          <div className="mt-12">
-            <Pagination
-              totalPages={Math.ceil(posts.length / pagination)}
-              currentPage={1}
-            />
+            <div className="w-full lg:col-span-6 h-full overflow-y-auto flex flex-col items-center">
+              <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7391890186550312960" height="1111" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
+              <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7384017792473186304" height="838" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
+            </div>
           </div>
         </div>
       </div>
-    </Base>
+    </Base >
   );
 };
 
