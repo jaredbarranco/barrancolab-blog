@@ -5,7 +5,7 @@
     "favicon": "/images/developer.png"
   },
   "settings": {
-    "pagination": 12,
+    "pagination": 5,
     "summary_length": 200,
     "blog_folder": "posts"
   },

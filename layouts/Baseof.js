@@ -90,16 +90,17 @@ const Base = ({
         />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
+      <div className="flex min-h-screen flex-col">
+        {router.route !== "/posts/[single]" && (
+          <TaxonomySlugProvider>
+            <Header />
+          </TaxonomySlugProvider>
+        )}
 
-      {router.route !== "/posts/[single]" && (
-        <TaxonomySlugProvider>
-          <Header />
-        </TaxonomySlugProvider>
-      )}
-
-      {/* main site */}
-      <main>{children}</main>
-      <Footer />
+        {/* main site */}
+        <main className="flex-grow">{children}</main>
+        <Footer />
+      </div>
     </>
   );
 };
