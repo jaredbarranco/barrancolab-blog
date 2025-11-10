@@ -2,6 +2,7 @@ import config from "@config/config.json";
 import social from "@config/social.json";
 import Base from "@layouts/Baseof";
 import ImageFallback from "@layouts/components/ImageFallback";
+import LinkedInPosts from "@layouts/components/LinkedInPosts";
 import Pagination from "@layouts/components/Pagination";
 import Post from "@layouts/components/Post";
 import Social from "@layouts/components/Social";
@@ -47,26 +48,20 @@ const Home = ({ posts }) => {
       <div className="section">
         <div className="container">
           <div className="flex flex-col lg:grid lg:grid-cols-12 lg:gap-8">
-            <div className="w-full lg:col-span-6 h-full overflow-y-auto">
+            <div className="h-full w-full overflow-y-auto lg:col-span-6">
               <div className="row">
                 {sortPostByDate.map((post, i) => (
-                  <Post
-                    className="col-12 mb-6"
-                    key={"key-" + i}
-                    post={post}
-                  />
+                  <Post className="col-12 mb-6" key={"key-" + i} post={post} />
                 ))}
               </div>
             </div>
-            <div className="w-full lg:col-span-6 h-full overflow-y-auto flex flex-col items-center">
-              <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7393690199102246913?collapsed=1" height="536" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
-              <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7391890186550312960" height="1111" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
-              <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7384017792473186304" height="838" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
+            <div className="flex h-full w-full flex-col items-center overflow-y-auto lg:col-span-6">
+              <LinkedInPosts />
             </div>
           </div>
         </div>
       </div>
-    </Base >
+    </Base>
   );
 };
 

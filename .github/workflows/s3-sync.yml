@@ -8,41 +8,42 @@ on:
     paths:
       - content/**
       - public/**
+      - layouts/components/LinkedInPosts.js
 
 jobs:
   build-and-deploy:
     environment: production
     runs-on: ubuntu-latest
     permissions:
-        id-token: write # This is required for requesting the JWT
-        contents: read  # This is required for actions/checkout
+      id-token: write # This is required for requesting the JWT
+      contents: read # This is required for actions/checkout
 
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
-    - name: Set Up Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '16'
+      - name: Set Up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "16"
 
-    - name: Install Dependencies
-      run: npm install --legacy-peer-deps
+      - name: Install Dependencies
+        run: npm install --legacy-peer-deps
 
-    - name: Build
-      run: npm run build
+      - name: Build
+        run: npm run build
 
-    - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v4
-      with:
-        role-to-assume: ${{ vars.AWS_IAM_ROLE }}
-        aws-region: us-east-1
-        role-duration-seconds: 1200
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_IAM_ROLE }}
+          aws-region: us-east-1
+          role-duration-seconds: 1200
 
-    - name: Sync to S3
-      run: aws s3 sync out/ s3://barrancolab-blog
+      - name: Sync to S3
+        run: aws s3 sync out/ s3://barrancolab-blog
 
-    - name: Invalidate Cloudfront
-      env:
-        distribution: ${{ secrets.CLOUDFRONT_ID }}
-      run: aws cloudfront create-invalidation --distribution-id "$distribution"  --paths "/*"
+      - name: Invalidate Cloudfront
+        env:
+          distribution: ${{ secrets.CLOUDFRONT_ID }}
+        run: aws cloudfront create-invalidation --distribution-id "$distribution"  --paths "/*"
