@@ -70,7 +70,7 @@ const Contact = ({ data }) => {
                   Send Message
                 </button>
                 <div>
-                <input type="hidden" name="_next" value="http://localhost:3000/thanks"></input>
+                <input type="hidden" name="_next" value="/thanks"></input>
                 </div>
               </form>
             </div>
